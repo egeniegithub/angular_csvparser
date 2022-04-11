@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-sm-4">
+        <select name="cus_header" id="cus-header" class="form-control" (change)="onAdvanceFeature($event.target.value)" [(ngModel)]="advanceFeature" >
+            <option value="0">Advance Feature</option>
+            <option value="1">Ignore All Unmapped Fields</option>
+            <option value="2">Add All Unignored/Unmapped</option>
+        </select>
+    </div>
+</div>

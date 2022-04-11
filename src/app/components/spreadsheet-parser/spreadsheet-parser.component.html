@@ -1,0 +1,65 @@
+
+    <div >
+        <app-cus-modal id="custom-modal-1">
+            <button (click)="closeModal('custom-modal-1')" class="ex-btn">X</button>
+            <div><input type="text" placeholder="Custom Field Name" class="create-input" [(ngModel)]="createNewValue"></div>
+            <div>
+                <button (click)="createNew()" class="themed-btn">CREATE</button>
+            </div>
+        </app-cus-modal>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table main-table">
+                    <thead class="table-header">
+                        <th>CSV Header</th>
+                        <th>System Field</th>
+                        <th>Example</th>
+                        <th>Example 2</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let header of mappedHeaders; let i = index">
+                            <td>{{header.fileHeader}}</td>
+                            <td class="system-field-col">
+                                <select name="cus_header" id="cus-header" class="form-control cus-header" (ngModelChange)="changeHeader(header.fileHeader,$event, i)" [(ngModel)]="header.mappedHeader" style="width: 200px;" >
+                                    <option *ngFor="let sysHeader of systemFieldLable;" [value]="sysHeader.key" >{{sysHeader.label}}</option>
+                                    <option value="ignore">--ignore--</option>
+                                    <option value="unmapped">--unmapped--</option>
+                                    <option value="__new">+ Create new field</option>
+                                </select>
+                            </td>
+                            <td *ngFor="let data of dataList | slice:0:2;">{{substringValue(data[header.fileHeader])}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12">
+                <div class="float-end">
+                    <button class="btn btn-primary next-btn" (click)="returnData()" >Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row pb-100">
+        <div class="col-sm-4">
+            <div class="dropdown">
+                <button class="btn featured-dropdown dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="onAdvanceIconChange()" >
+                  ADVANCE FEATURE
+                  <img [src]="advanceFeatureIcon ? '/assets/img/circle-plus.png' : '/assets/img/circle-minus.png'" alt="" class="f-m-icon" >
+                </button>
+                <div class="dropdown-menu dd-menu-cus" aria-labelledby="dropdownMenuButton">
+                  <button class="dropdown-item featured-btn" (click)="onAdvanceFeature('1')" >IGNORE ALL UNMAPPED <img src="/assets/img/info.png" alt="" title="By clicking this button all unmapped field will be ignored." (click)="openToolTip($event)" class="info-icon"></button>
+                  <button class="dropdown-item featured-btn" (click)="onAdvanceFeature('2')" >ADD ALL UNMAPPED <img src="/assets/img/info.png" alt="" title="By clicking this button all unignored field will be created as custom fields and will be selected in drop down." (click)="openToolTip($event)" class="info-icon"></button>
+                </div>
+              </div>
+        </div>
+    </div>
+
+
+
+<!-- <ng-template #testview>
+    <app-show-test [responseData]="responseData"></app-show-test>
+</ng-template> -->
+

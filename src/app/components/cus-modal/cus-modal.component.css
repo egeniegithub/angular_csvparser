@@ -1,0 +1,55 @@
+/* MODAL STYLES
+-------------------------------*/
+
+.cus-modal-background {
+    /* modal background fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: #000;
+    opacity: 0.75;
+    
+    /* z-index must be below .jw-modal and above everything else  */
+    z-index: 900;
+}
+
+.cus-modal {
+    /* modal container fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /* z-index must be higher than .jw-modal-background */
+    z-index: 1000;
+    
+    /* enables scrolling for tall modals */
+    overflow: auto;
+}
+
+#custom-modal-1 .cus-modal-body{
+    width: 250px !important;
+}
+
+#custom-modal-2 .cus-modal-body{
+    width: 500px !important;
+}
+
+.cus-modal-body {
+    padding: 20px;
+    background: #fff;
+    margin: 0 auto;
+    margin-top: 200px;
+    width: 250px;
+    border-radius: 10px;
+    position: relative;
+}
+
+body.cus-modal-open {
+    /* body overflow is hidden to hide main scrollbar when modal window is open */
+    overflow: hidden;
+}
